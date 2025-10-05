@@ -5,21 +5,21 @@ class OpenComposer < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.17/open-composer-cli-darwin-arm64.zip"
-      sha256 "3c46111e083c71e44f8ce6edf276305f99d6b213e87a14d7c2cc4806c49a8834"
+      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.18/open-composer-cli-darwin-arm64.zip"
+      sha256 "965cc5d0f0ed969b25c8d137937264fb50c8eb3d9ecd829c846768ef8e631002"
     elsif Hardware::CPU.intel?
-      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.17/open-composer-cli-darwin-x64.zip"
-      sha256 "520d6fd7285e20fb92c6028cafbdc6d8f90c20a4ee5a08c6c76b3707ed508d3f"
+      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.18/open-composer-cli-darwin-x64.zip"
+      sha256 "e5afeee2b47c16f0e096902000ebf586fbf20d493df0e92f4c36b6d5c9536d64"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.17/open-composer-cli-linux-aarch64-musl.zip"
-      sha256 "1d7e5a58a439c2d97395e1e35b2021afe426d548d33e303decab5bc78782eee9"
+      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.18/open-composer-cli-linux-aarch64-musl.zip"
+      sha256 "746f6d1f18c1d0ff9536447294ec62cacfd3bcc62583ce360566036df513371f"
     elsif Hardware::CPU.intel?
-      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.17/open-composer-cli-linux-x64.zip"
-      sha256 "51b87434e06464bcd8a3bd0ba9663895a01e09fcb341eb0be93978f990805bc3"
+      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.18/open-composer-cli-linux-x64.zip"
+      sha256 "1c30a408d0e1a013af376e92c81c4bf9b3e2c696f4ba1650fbff2e58614f831c"
     end
   end
 
@@ -40,7 +40,7 @@ class OpenComposer < Formula
                   "#{os}-#{arch}"
                 end
 
-    binary_dir = "open-composer-cli-#{os_suffix}"
+    binary_dir = "@open-composer/cli-#{os_suffix}"
 
     bin.install "#{binary_dir}/bin/open-composer"
     bin.install_symlink bin/"open-composer" => "oc"
