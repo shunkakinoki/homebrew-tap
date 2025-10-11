@@ -5,44 +5,36 @@ class OpenComposer < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.19/open-composer-cli-darwin-arm64.zip"
-      sha256 "f8aa3aa4e02e32a0d5add9b72e4d8784225ad6863b9edc823c781693af1b5676"
+      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.20/open-composer-cli-darwin-arm64.zip"
+      sha256 "62124adaaf74395ef20fe1cf55e45fa6ea92342eb0a10b69de6bd74fb3085c38"
     elsif Hardware::CPU.intel?
-      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.19/open-composer-cli-darwin-x64.zip"
-      sha256 "a4a149f852f2ca1215e634d36864a24bbb707e530f008de5963e08c8752fcf2f"
+      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.20/open-composer-cli-darwin-x64.zip"
+      sha256 "bea114151050dbd585dea031d1b490dc988d335385ee8c34266abbfbd92c54f2"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.19/open-composer-cli-linux-aarch64-musl.zip"
-      sha256 "79b33a2ff2d09c9bc5e44e3ff2542bdf304bbe7958d06c34b56b4c6c7afa9f7f"
+      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.20/open-composer-cli-linux-aarch64-musl.zip"
+      sha256 "3dd2bbb35b6d44b5e759cf33c7a2eb1e51920dd141b39c2902e23756788e6808"
     elsif Hardware::CPU.intel?
-      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.19/open-composer-cli-linux-x64.zip"
-      sha256 "c2f04b76e5afd42146a273f0ab4cc8d19128c965a27476483602a432de8d4a2f"
+      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.20/open-composer-cli-linux-x64.zip"
+      sha256 "fa4c0ce44c25d1f25ec6c38e5ec5b7e618fc6563a8032b9bf7ac29329115b919"
     end
   end
 
   def install
-    # Determine the binary name based on OS and architecture
     os = OS.mac? ? "darwin" : "linux"
-    arch = Hardware::CPU.arch.to_s
-
-    arch = case arch
+    arch = case Hardware::CPU.arch.to_s
            when "x86_64" then "x64"
-           when "arm64" then "arm64"
-           else arch
+           when "arm64"  then "arm64"
+           else Hardware::CPU.arch.to_s
            end
 
-    os_suffix = if os == "linux" && arch == "arm64"
-                  "linux-aarch64-musl"
-                else
-                  "#{os}-#{arch}"
-                end
+    os_suffix = os == "linux" && arch == "arm64" ? "linux-aarch64-musl" : "#{os}-#{arch}"
+    bin_path = "cli-#{os_suffix}/bin/open-composer"
 
-    binary_dir = "@open-composer/cli-#{os_suffix}"
-
-    bin.install "#{binary_dir}/bin/open-composer"
+    bin.install bin_path => "open-composer"
     bin.install_symlink bin/"open-composer" => "oc"
     bin.install_symlink bin/"open-composer" => "opencomposer"
   end
