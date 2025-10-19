@@ -5,21 +5,21 @@ class OpenComposer < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.22/open-composer-cli-darwin-arm64.zip"
-      sha256 "90137d636cae5ee13c99774b8f4c21ecde530b45b20167a5e6ad365b11d85c06"
+      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.23/open-composer-cli-darwin-arm64.zip"
+      sha256 "ca7fab674b2acca296f550a8a2f6f104e52446732d67b1911fdec4d26ffd70e7"
     elsif Hardware::CPU.intel?
-      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.22/open-composer-cli-darwin-x64.zip"
-      sha256 "42c8963d84e0fc7496af25b4d0101edf21c99ea4e8bd545b3ef966d67a0ac2a6"
+      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.23/open-composer-cli-darwin-x64.zip"
+      sha256 "2f2800c86bea274bd2ccef9439df1061b182a83137a044a27be3119a182b52c7"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.22/open-composer-cli-linux-aarch64-musl.zip"
-      sha256 "871b6ba25ad8c69df6e2c233a3647f557af3eb091c78b9a0cd69b030ea19c9f3"
+      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.23/open-composer-cli-linux-aarch64-musl.zip"
+      sha256 "749ba34e9e4beb314d0ca7e6264c0ab6c984551003a85b99c41962780c0f31e6"
     elsif Hardware::CPU.intel?
-      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.22/open-composer-cli-linux-x64.zip"
-      sha256 "2cdc8447c33af5ec6f8d23b41b3e05bca03759ef4dd498c82514f6172a66012f"
+      url "https://github.com/shunkakinoki/open-composer/releases/download/open-composer@0.8.23/open-composer-cli-linux-x64.zip"
+      sha256 "2de5e2748e596316b9a987f897c314bb0368a512c8a59f4842d2f25461ffb1f3"
     end
   end
 
